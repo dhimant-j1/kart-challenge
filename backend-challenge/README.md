@@ -54,3 +54,22 @@ https://github.com/oolio-group/kart-challenge/tree/advanced-challenge/backend-ch
 1. Use this repository as a template and create a new repository in your account
 2. Start coding
 3. Share your repository
+
+
+# How to run the project
+1. Clone the repository
+2. Install Go
+3. Run the following command to install the required dependencies:
+```bash
+go mod tidy
+```
+4. Run the following command to start the server:
+```bash
+go run main.go
+```
+5. The server will start on port 8080 by default. You can access the API documentation at `http://localhost:8080/docs` or `http://localhost:8080/swagger/index.html`
+6. You can use a tool like Postman which is provided in the repository to test the API endpoints.\
+   You can also use curl or any other HTTP client to test the API endpoints.
+7. You have to create a new directory called `data` in the root of the project and place the three files in it.\
+   The files should be named `couponbase1.gz`, `couponbase2.gz` and `couponbase3.gz`.\
+   The server will automatically load the files and validate the promo codes.

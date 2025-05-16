@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "20b18e36-4a0f-413c-bc5f-fc968ff1bfe2",
+		"name": "Kart challange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9774982"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:8080/api/product -H \"Accept: application/json\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/product/1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/product/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:8080/api/product/1 -H \"Accept: application/json\""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "api_key",
+						"value": "apitest"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n      {\n        \"productId\": \"1\",\n        \"quantity\": 2\n      },\n      {\n        \"productId\": \"3\",\n        \"quantity\": 1\n      }\n    ]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/api/order \\\n  -H \"Content-Type: application/json\" \\\n  -H \"api_key: apitest\" \\\n  -d '{\n    \"items\": [\n      {\n        \"productId\": \"1\",\n        \"quantity\": 2\n      },\n      {\n        \"productId\": \"3\",\n        \"quantity\": 1\n      }\n    ]\n  }'"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "api_key",
+						"value": "apitest"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"items\": [\n      {\n        \"productId\": \"1\",\n        \"quantity\": 2\n      }\n    ],\n    \"couponCode\": \"HAPPYHRS\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:8080/api/order \\\n  -H \"Content-Type: application/json\" \\\n  -H \"api_key: apitest\" \\\n  -d '{\n    \"items\": [\n      {\n        \"productId\": \"1\",\n        \"quantity\": 2\n      }\n    ],\n    \"couponCode\": \"HAPPYHRS\"\n  }'"
+			},
+			"response": []
+		}
+	]
+}
