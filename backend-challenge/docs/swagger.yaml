@@ -1,0 +1,175 @@
+basePath: /api
+definitions:
+  models.APIResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      type:
+        type: string
+    type: object
+  models.Order:
+    properties:
+      discounts:
+        type: number
+      id:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/models.OrderItem'
+        type: array
+      products:
+        items:
+          $ref: '#/definitions/models.Product'
+        type: array
+      total:
+        type: number
+    type: object
+  models.OrderItem:
+    properties:
+      productId:
+        type: string
+      quantity:
+        type: integer
+    type: object
+  models.OrderRequest:
+    properties:
+      couponCode:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/models.OrderItem'
+        type: array
+    type: object
+  models.Product:
+    properties:
+      category:
+        type: string
+      id:
+        type: string
+      image:
+        $ref: '#/definitions/models.ProductImage'
+      name:
+        type: string
+      price:
+        type: number
+    type: object
+  models.ProductImage:
+    properties:
+      desktop:
+        type: string
+      mobile:
+        type: string
+      tablet:
+        type: string
+      thumbnail:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a food ordering API based on the OpenAPI 3.1 specification.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Order Food Online API
+  version: "1.0"
+paths:
+  /order:
+    post:
+      consumes:
+      - application/json
+      description: Place a new order in the store
+      parameters:
+      - description: Order information
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/models.OrderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Order'
+        "400":
+          description: Invalid input
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+        "422":
+          description: Validation exception
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Place an order
+      tags:
+      - order
+  /product:
+    get:
+      consumes:
+      - application/json
+      description: Get all products available for order
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Product'
+            type: array
+      summary: List products
+      tags:
+      - product
+  /product/{productId}:
+    get:
+      consumes:
+      - application/json
+      description: Returns a single product
+      parameters:
+      - description: Product ID
+        in: path
+        name: productId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Product'
+        "400":
+          description: Invalid ID supplied
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+        "404":
+          description: Product not found
+          schema:
+            $ref: '#/definitions/models.APIResponse'
+      summary: Get product by ID
+      tags:
+      - product
+securityDefinitions:
+  ApiKeyAuth:
+    description: API key authentication for order operations
+    in: header
+    name: api_key
+    type: apiKey
+swagger: "2.0"
